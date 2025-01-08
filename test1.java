@@ -10,7 +10,7 @@ public class HangmanGame {
     String strGuess;
     String strSecretWord;
     String strTheme;
-    String StrGuessedWord
+    String StrGuessedWord;
     int intTries;
     int intMaxTries = 6;
     int intWordLength;
