@@ -1,6 +1,6 @@
 import arc.*;
 
-public class test1.java {
+public class test1 {
     public static void main(String[] args) {
         // Create console for input/output
         Console con = new Console();
