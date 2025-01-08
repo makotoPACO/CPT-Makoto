@@ -27,15 +27,16 @@ public class HangmanGame {
         
         // Main menu loop
         while (true) {
-            // Show the main menu options
-            con.println("Main Menu");
-            con.println("1. Play Game");
-            con.println("2. View High Scores");
-            con.println("3. Quit");
-            con.println("4. Help");
-            con.println("5. Add Theme");
-            con.println("Enter your choice: ");
-            int intMenuChoice = con.readInt();
+        // Show the main menu options
+        con.println("Main Menu");
+        con.println("1. Play Game");
+        con.println("2. View High Scores");
+        con.println("3. Quit");
+        con.println("4. Help");
+        con.println("5. Add Theme");
+        con.println("Enter your choice: ");
+        int intMenuChoice;
+        intMenuChoice = con.readInt();
             
             if (intMenuChoice == 1) {
                 // Play the game
