@@ -54,3 +54,25 @@ public class test1 {
 
                 // Sort the words based on the random number in the second column (Bubble sort)
 
+
+				// game code
+
+
+            } else if (intMenuChoice == 2) {
+                // View high scores
+               
+				// Make score board
+            } else if (intMenuChoice == 3) {
+                // Quit the game
+                con.println("Goodbye!");
+               
+            } else if (intMenuChoice == 4) {
+                // Help
+                con.println("Help: Guess the word correctly before you run out of tries.");
+
+
+
+
+
+
+
