@@ -18,6 +18,7 @@ public class HangmanGame {
     int intThemeChoice;
     double dblWordGuessed;
         
+    TextInputFile fortnite = new TextInputFile("fortnite.txt");
     strTheme = new String[3][11]; // 3 themes, 10 words per theme + one column for random number
     String[] StrGuessedWord;
         
