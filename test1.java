@@ -69,6 +69,11 @@ public class test1 {
             } else if (intMenuChoice == 4) {
                 // Help
                 con.println("Help: Guess the word correctly before you run out of tries.");
+                
+			}
+	}
+}			
+
 
 
 
