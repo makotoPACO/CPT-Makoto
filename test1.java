@@ -6,6 +6,7 @@ public class test1 {
         Console con = new Console();
         
 	// Declare variables
+	String strWords [] [];
     String strPlayerName;
     String strGuess;
     String strSecretWord;
@@ -17,7 +18,8 @@ public class test1 {
     int intIndex;
     int intThemeChoice;
     double dblWordGuessed;
-        
+    //Array
+    strWords = new String [2][11];   
         
         // Load themes and words from file
         //load the ThemesAndWords(strTheme, con);
@@ -40,6 +42,8 @@ public class test1 {
                 // Play the game
                 con.println("Enter your name: ");
 				strPlayerName = con.readLine();
+				con.println("Pick a theme: ");
+				
 				
             } else if (dblMenuChoice == 2) {
                 // View high scores
