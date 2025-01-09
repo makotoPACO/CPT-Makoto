@@ -35,11 +35,11 @@ public class test1 {
         
        double dblMenuChoice;
        dblMenuChoice = con.readDouble();;  
-           
+        //Choices   
             if (dblMenuChoice == 1) {
                 // Play the game
                 con.println("Enter your name: ");
-            
+				strPlayerName = con.readline();
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
