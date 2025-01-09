@@ -43,8 +43,9 @@ public class test1 {
                 con.println("Enter your name: ");
 				strPlayerName = con.readLine();
 				con.println("Pick a theme: ");
-				
-				
+				strTheme = con.readLine();
+				//Grab theme
+				TextInputFile Themepick = new TextInputFile(+strTheme);
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
