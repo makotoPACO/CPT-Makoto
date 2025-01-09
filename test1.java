@@ -45,7 +45,7 @@ public class test1 {
 				con.println("Pick a theme: ");
 				strTheme = con.readLine();
 				//Grab theme
-				TextInputFile Themepick = new TextInputFile(+strTheme);
+				TextInputFile Themepick = new TextInputFile(strTheme);
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
