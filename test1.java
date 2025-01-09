@@ -18,9 +18,6 @@ public class test1 {
     int intThemeChoice;
     double dblWordGuessed;
         
-    TextInputFile strTheme = new TextInputFile("themes.txt");
-    strTheme = new String[3][11]; // 3 themes, 10 words per theme + one column for random number
-    String[] StrGuessedWord;
         
         // Load themes and words from file
         //load the ThemesAndWords(strTheme, con);
@@ -35,45 +32,31 @@ public class test1 {
         con.println("4. Help");
         con.println("5. Add Theme");
         con.println("Enter your choice: ");
-        int intMenuChoice;
-        intMenuChoice = con.readInt();
-            
-            if (intMenuChoice == 1) {
+        
+       double dblMenuChoice;
+       dblMenuChoice = con.readDouble();;  
+           
+            if (dblMenuChoice == 1) {
                 // Play the game
                 con.println("Enter your name: ");
-                strPlayerName = con.readline().trim();
-                
-                // Display available themes and let the user select
-                con.println("Choose a theme:");
-                for (int i = 0; i < 3; i++) {
-                    con.println((i + 1) + ". " + strTheme[i][0]);
-                }
-                
-                con.println("Enter the number corresponding to your choice: ");
-                intThemeChoice = con.readInt() - 1; // Subtract 1 to get the index
-
-                // Sort the words based on the random number in the second column (Bubble sort)
-
-
-				// game code
-
-
-            } else if (intMenuChoice == 2) {
+            
+            } else if (dblMenuChoice == 2) {
                 // View high scores
                
 				// Make score board
-            } else if (intMenuChoice == 3) {
+            } else if (dblMenuChoice == 3) {
                 // Quit the game
                 con.println("Goodbye!");
                
-            } else if (intMenuChoice == 4) {
+            } else if (dblMenuChoice == 4) {
                 // Help
                 con.println("Help: Guess the word correctly before you run out of tries.");
                 
 			}
+		}
+			
 	}
-}			
-
+}
 
 
 
