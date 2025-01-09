@@ -39,7 +39,8 @@ public class test1 {
             if (dblMenuChoice == 1) {
                 // Play the game
                 con.println("Enter your name: ");
-				strPlayerName = con.readline();
+				strPlayerName = con.readLine();
+				
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
