@@ -42,10 +42,15 @@ public class test1 {
                 // Play the game
                 con.println("Enter your name: ");
 				strPlayerName = con.readLine();
+				con.println("Christmas ");
+				con.println("games ");
+				con.println("Pokemon ");
 				con.println("Pick a theme: ");
 				strTheme = con.readLine();
 				//Grab theme
 				TextInputFile Themepick = new TextInputFile(strTheme);
+				
+				
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
