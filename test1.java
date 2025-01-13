@@ -50,7 +50,9 @@ public class test1 {
 
 				strThemechoice = con.readLine();
 					if (strThemechoice == 1) {
-				 
+				 } else if (strThemechoice == 2) {
+				 } else if (strThemechoice == 3) {
+				 } else if (strThemechoice == 4) {
 				//Grab theme
 				TextInputFile Themepick = new TextInputFile(strTheme);
 				
