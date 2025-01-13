@@ -12,6 +12,7 @@ public class test1 {
     String strSecretWord;
     String strTheme;
     String StrGuessedWord;
+    String strThemechoice
     int intTries;
     int intMaxTries = 6;
     int intWordLength;
@@ -32,7 +33,6 @@ public class test1 {
         con.println("2. View High Scores");
         con.println("3. Quit");
         con.println("4. Help");
-        con.println("5. Add Theme");
         con.println("Enter your choice: ");
         
        double dblMenuChoice;
@@ -42,11 +42,16 @@ public class test1 {
                 // Play the game
                 con.println("Enter your name: ");
 				strPlayerName = con.readLine();
-				con.println("Christmas ");
-				con.println("games ");
-				con.println("Pokemon ");
+				con.println("1. Christmas ");
+				con.println("2. games ");
+				con.println("3. Pokemon ");
+				con.println("4. Add Theme");
 				con.println("Pick a theme: ");
-				strTheme = con.readLine();
+
+				strThemechoice = con.readLine();
+				
+				if (strThemechoice == 1) {
+				 
 				//Grab theme
 				TextInputFile Themepick = new TextInputFile(strTheme);
 				
@@ -67,8 +72,8 @@ public class test1 {
 		}
 			
 	}
+  }
 }
-
 
 
 
