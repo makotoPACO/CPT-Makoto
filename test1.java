@@ -56,7 +56,8 @@ public class test1 {
 				} else if (dblThemechoice == 3) {
 				TextInputFile Theme = new TextInputFile("Pokemon.txt");	
 				} else if (dblThemechoice == 4) {	
-					
+				
+							
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
