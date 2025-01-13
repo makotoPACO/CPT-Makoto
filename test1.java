@@ -12,7 +12,7 @@ public class test1 {
     String strSecretWord;
     String strTheme;
     String StrGuessedWord;
-    String strThemechoice;
+    double dblThemechoice;
     int intTries;
     int intMaxTries = 6;
     int intWordLength;
@@ -47,16 +47,16 @@ public class test1 {
 				con.println("3. Pokemon ");
 				con.println("4. Add Theme");
 				con.println("Pick a theme: ");
-
-				strThemechoice = con.readLine();
-					if (strThemechoice == 1) {
-				 } else if (strThemechoice == 2) {
-				 } else if (strThemechoice == 3) {
-				 } else if (strThemechoice == 4) {
-				//Grab theme
-				TextInputFile Themepick = new TextInputFile(strTheme);
-				
-				
+				 dblThemechoice = con.readDouble();
+				//Theme pick
+				if (dblThemechoice == 1) {	
+				TextInputFile Theme = new TextInputFile("Christmas.txt");	 
+				} else if (dblThemechoice == 2) {
+			    TextInputFile Theme = new TextInputFile("Games.txt");	 
+				} else if (dblThemechoice == 3) {
+				TextInputFile Theme = new TextInputFile("Pokemon.txt");	
+				} else if (dblThemechoice == 4) {	
+					
             } else if (dblMenuChoice == 2) {
                 // View high scores
                
@@ -69,12 +69,13 @@ public class test1 {
                 // Help
                 con.println("Help: Guess the word correctly before you run out of tries.");
                 
-			}
+            
+				}				
+			}			
 		}
-			
 	}
-  }
 }
+
 
 
 
