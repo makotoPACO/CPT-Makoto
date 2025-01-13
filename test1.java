@@ -49,7 +49,7 @@ public class test1 {
 				con.println("Pick a theme: ");
 
 				strThemechoice = con.readLine();
-				
+					if (strThemechoice == 1) {
 				 
 				//Grab theme
 				TextInputFile Themepick = new TextInputFile(strTheme);
