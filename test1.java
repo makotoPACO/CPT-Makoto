@@ -12,7 +12,7 @@ public class test1 {
     String strSecretWord;
     String strTheme;
     String StrGuessedWord;
-    String strThemechoice
+    String strThemechoice;
     int intTries;
     int intMaxTries = 6;
     int intWordLength;
@@ -50,7 +50,6 @@ public class test1 {
 
 				strThemechoice = con.readLine();
 				
-				if (strThemechoice == 1) {
 				 
 				//Grab theme
 				TextInputFile Themepick = new TextInputFile(strTheme);
