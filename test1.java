@@ -14,11 +14,7 @@ public class test1 {
     String StrGuessedWord;
     double dblThemechoice;
     int intTries;
-    int intMaxTries = 6;
-    int intWordLength;
-    int intIndex;
-    int intThemeChoice;
-    double dblWordGuessed;
+  
     //Array
     strWords = new String [2][11];   
         
