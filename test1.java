@@ -19,7 +19,8 @@ public class test1 {
   
     //Array
     strWords = new String [2][11];   
-        
+    strNumbering =    
+     
         // Load themes and words from file
         //load the ThemesAndWords(strTheme, con);
         
