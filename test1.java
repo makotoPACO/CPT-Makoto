@@ -65,7 +65,11 @@ public class test1 {
             } else if (dblMenuChoice == 4) {
                 // Help
                 con.println("Help: Guess the word correctly before you run out of tries.");
-                
+                con.println("Help: Guess the word correctly within 6 tries.");
+                con.println("Each correct word solved earns 100 points.");
+                con.println("You will be given a hanging post showing your progress.");
+                con.println("Good luck!");
+
             
 				}				
 			}			
