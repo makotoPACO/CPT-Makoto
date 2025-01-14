@@ -7,6 +7,8 @@ public class test1 {
         
 	// Declare variables
 	String strWords [] [];
+	String strNumbering;
+	String strWord;
     String strPlayerName;
     String strGuess;
     String strSecretWord;
