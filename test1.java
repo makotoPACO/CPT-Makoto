@@ -6,10 +6,7 @@ public class CPTtest {
         // Create console for input/output
         Console con = new Console();
 
-        // Variable declarations at the top
-        TextInputFile Theme = new TextInputFile("Pokemon.txt");	
-        TextInputFile Theme = new TextInputFile("Games.txt");
-        TextInputFile Theme = new TextInputFile("Christmas.txt");	 
+        // Variable declarations at the top	 
         String strPlayerName;
         String strSecretWord;
         String[][] wordsArray;
@@ -78,4 +75,41 @@ public class CPTtest {
                 con.println("Invalid choice! Please try again.");
             }
         }
+    }
+
+    // Display themes
+    private static void displayThemes() {
+        Console con = new Console();
+        con.println("1. Christmas");
+        con.println("2. Games");
+        con.println("3. Pokemon");
+    }
+
+    // Get theme file name based on user input
+    private static String getThemeFile(double dblThemeChoice) {
+        if (dblThemeChoice == 1) {
+            return "Christmas.txt";
+        } else if (dblThemeChoice == 2) {
+            return "Games.txt";
+        } else if (dblThemeChoice == 3) {
+            return "Pokemon.txt";
+        } else {
+            return "Invalid";
+        }
+    }
+
+    // Load words from a theme file and store them in a 2D array
+    private static String[][] loadWords(String fileName) {
+        TextInputFile themeFile = new TextInputFile(fileName);
+        String[][] wordsArray = new String[10][2];  // 10 words, 2 columns (word, random number)
+        
+        for (int i = 0; i < 10; i++) {
+            wordsArray[i][0] = themeFile.readLine(); // Load word
+            wordsArray[i][1] = String.valueOf((int)(Math.random() * 100) + 1); // Generate random number
+        }
+        themeFile.close();
+        
+        // Apply bubble sort to randomize word order
+        bubbleSort(wordsArray);
+        return wordsArray;
     }
