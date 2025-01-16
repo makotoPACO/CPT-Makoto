@@ -1,88 +1,81 @@
 import arc.*;
 
-public class test1 {
+public class CPTtest {
+
     public static void main(String[] args) {
         // Create console for input/output
         Console con = new Console();
-        
-	// Declare variables
-	String strWords [] [];
-	String strNumbering;
-	String strWord;
-    String strPlayerName;
-    String strGuess;
-    String strSecretWord;
-    String strTheme;
-    String StrGuessedWord;
-    double dblThemechoice;
-    int intTries;
-  
-    //Array
-    strWords = new String [2][11];   
-    strNumbering =    
-     
-        // Load themes and words from file
-        //load the ThemesAndWords(strTheme, con);
-        
+
+        // Variable declarations at the top
+        TextInputFile Theme = new TextInputFile("Pokemon.txt");	
+        TextInputFile Theme = new TextInputFile("Games.txt");
+        TextInputFile Theme = new TextInputFile("Christmas.txt");	 
+        String strPlayerName;
+        String strSecretWord;
+        String[][] wordsArray;
+        double dblThemeChoice;
+        int intMaxTries = 6;
+        int intTries;
+        int score;
+        double dblMenuChoice;
+
         // Main menu loop
         while (true) {
-        // Show the main menu options
-        con.println("Main Menu");
-        con.println("1. Play Game");
-        con.println("2. View High Scores");
-        con.println("3. Quit");
-        con.println("4. Help");
-        con.println("Enter your choice: ");
-        
-       double dblMenuChoice;
-       dblMenuChoice = con.readDouble();;  
-        //Choices   
+            con.println("Main Menu");
+            con.println("1. Play Game");
+            con.println("2. View High Scores");
+            con.println("3. Help");
+            con.println("4. Add Theme");
+            con.println("5. Quit");
+            con.print("Enter your choice: ");
+            dblMenuChoice = con.readDouble();
+
+            // Menu logic
             if (dblMenuChoice == 1) {
-                // Play the game
-                con.println("Enter your name: ");
-				strPlayerName = con.readLine();
-				con.println("1. Christmas ");
-				con.println("2. games ");
-				con.println("3. Pokemon ");
-				con.println("4. Add Theme");
-				con.println("Pick a theme: ");
-				 dblThemechoice = con.readDouble();
-				//Theme pick
-				if (dblThemechoice == 1) {	
-				TextInputFile Theme = new TextInputFile("Christmas.txt");	 
-				} else if (dblThemechoice == 2) {
-			    TextInputFile Theme = new TextInputFile("Games.txt");	 
-				} else if (dblThemechoice == 3) {
-				TextInputFile Theme = new TextInputFile("Pokemon.txt");	
-				} else if (dblThemechoice == 4) {	
-				
-							
+                // Play game logic
+                con.print("Enter your name: ");
+                strPlayerName = con.readLine();
+                
+                // Load themes from Themes.TXT and display options
+                con.println("Choose a theme:");
+                displayThemes();
+                dblThemeChoice = con.readDouble();
+                String themeFile = getThemeFile(dblThemeChoice);
+
+                // Read words from the selected theme file
+                wordsArray = loadWords(themeFile);
+                strSecretWord = getRandomWord(wordsArray);
+                
+                // Start the game and calculate score
+                score = playGame(con, strSecretWord, intMaxTries);
+                
+                // Save high score if player wins
+                if (score > 0) {
+                    saveHighScore(strPlayerName, score);
+                }
+
             } else if (dblMenuChoice == 2) {
                 // View high scores
-               
-				// Make score board
+                viewHighScores(con);
+
             } else if (dblMenuChoice == 3) {
-                // Quit the game
-                con.println("Goodbye!");
-               
-            } else if (dblMenuChoice == 4) {
-                // Help
-                con.println("Help: Guess the word correctly before you run out of tries.");
+                // Help message
                 con.println("Help: Guess the word correctly within 6 tries.");
                 con.println("Each correct word solved earns 100 points.");
                 con.println("You will be given a hanging post showing your progress.");
                 con.println("Good luck!");
 
-            
-				}				
-			}			
-		}
-	}
-}
+            } else if (dblMenuChoice == 4) {
+                // Add theme logic
+                addTheme(con);
 
+            } else if (dblMenuChoice == 5) {
+                // Quit the game
+                con.println("Goodbye!");
+                break;
 
-
-
-
-
-
+            } else {
+                con.println("Invalid choice! Please try again.");
+            }
+        }
+    }
