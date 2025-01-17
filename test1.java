@@ -6,7 +6,7 @@ public class CPTtest {
         // Create console for input/output
         Console con = new Console();
 
-        // Variable declarations at the top	 
+        // Variable declarations at the top
         String strPlayerName;
         String strSecretWord;
         String[][] wordsArray;
@@ -113,3 +113,87 @@ public class CPTtest {
         bubbleSort(wordsArray);
         return wordsArray;
     }
+
+    // Bubble sort to randomly order the words
+    private static void bubbleSort(String[][] array) {
+        int n = array.length;
+        boolean swapped;
+        
+        // Bubble sort algorithm
+        do {
+            swapped = false;
+            for (int i = 0; i < n - 1; i++) {
+                if (Integer.parseInt(array[i][1]) > Integer.parseInt(array[i + 1][1])) {
+                    // Swap the words and their corresponding random numbers
+                    String[] temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);  // Repeat until no swaps occur
+    }
+
+    // Get a random word from the sorted array
+    private static String getRandomWord(String[][] wordsArray) {
+        return wordsArray[0][0];  // Get the word after sorting
+    }
+
+    // Function to play the game
+    private static int playGame(Console con, String strSecretWord, int intMaxTries) {
+        int intTries = 0;
+        String strGuessedWord = "_".repeat(strSecretWord.length());
+        boolean gameOver = false;
+
+        // Game loop
+        while (!gameOver) {
+            con.println("Word to guess: " + strGuessedWord);
+            con.println("Tries left: " + (intMaxTries - intTries));
+            con.print("Guess the word: ");
+            String guess = con.readLine().toLowerCase();
+
+            // Check if guess is correct
+            if (guess.equals(strSecretWord)) {
+                con.println("Congratulations! You've guessed the word correctly!");
+                gameOver = true;
+                return 100; // Score for guessing the word
+            } else {
+                intTries++;
+                con.println("Incorrect guess!");
+            }
+
+            // Check if player has run out of tries
+            if (intTries >= intMaxTries) {
+                con.println("Game Over! The correct word was: " + strSecretWord);
+                gameOver = true;
+                return 0; // No score if the player loses
+            }
+        }
+        return 0; // In case of any error, return 0
+    }
+
+    // Function to save high score
+    private static void saveHighScore(String playerName, int score) {
+        TextOutputFile highScoreFile = new TextOutputFile("highscores.txt", true);
+        highScoreFile.println(playerName + ": " + score);
+        highScoreFile.close();
+    }
+
+    // Function to view high scores
+    private static void viewHighScores(Console con) {
+        TextInputFile highScoreFile = new TextInputFile("highscores.txt");
+        con.println("High Scores:");
+        while (!highScoreFile.eof()) {
+            String scoreLine = highScoreFile.readLine();
+            con.println(scoreLine);
+        }
+        highScoreFile.close();
+    }
+
+    // Function to add a new theme (For simplicity, this assumes the theme is added manually to the file)
+    private static void addTheme(Console con) {
+        con.println("To add a new theme, simply create a new .txt file with 10 words of 7 letters each.");
+        con.println("Save the file with the theme name (e.g., 'NewTheme.txt') and add it to the program.");
+    }
+}
+
