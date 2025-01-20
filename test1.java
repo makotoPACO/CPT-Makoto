@@ -1,6 +1,6 @@
 import arc.*;
 
-public class CPTtest {
+public class test1 {
 
     public static void main(String[] args) {
         // Create console for input/output
@@ -197,3 +197,14 @@ public class CPTtest {
     }
 }
 
+    // Function to draw the hangman based on the number of tries
+    public static void drawHangman{
+        String[] arrHangmanStages = {
+            "  ----\n  |  |\n     |\n     |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n     |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n  |  |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|  |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|\\ |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|\\ |\n /   |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|\\ |\n / \\ |\n     |\n---------"
+    }
