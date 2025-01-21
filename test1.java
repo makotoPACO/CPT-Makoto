@@ -33,7 +33,7 @@ public class test1 {
                 con.print("Enter your name: ");
                 strPlayerName = con.readLine();
                 
-                // Load themes from Themes.TXT and display options
+                // Load themes and display options
                 con.println("Choose a theme:");
                 displayThemes();
                 dblThemeChoice = con.readDouble();
@@ -77,7 +77,7 @@ public class test1 {
         }
     }
 
-    // Display themes
+    // Display themes (now directly accessible by file names)
     private static void displayThemes() {
         Console con = new Console();
         con.println("1. Christmas");
@@ -144,10 +144,23 @@ public class test1 {
         int intTries = 0;
         String strGuessedWord = "_".repeat(strSecretWord.length());
         boolean gameOver = false;
+        StringBuilder revealedLetters = new StringBuilder(strGuessedWord);
+
+        // Hangman stages
+        String[] arrHangmanStages = {
+            "  ----\n  |  |\n     |\n     |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n     |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n  |  |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|  |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|\\ |\n     |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|\\ |\n /   |\n     |\n---------",
+            "  ----\n  |  |\n  O  |\n /|\\ |\n / \\ |\n     |\n---------"
+        };
 
         // Game loop
         while (!gameOver) {
-            con.println("Word to guess: " + strGuessedWord);
+            con.println(arrHangmanStages[intTries]); // Draw hangman
+            con.println("Word to guess: " + revealedLetters);
             con.println("Tries left: " + (intMaxTries - intTries));
             con.print("Guess the word: ");
             String guess = con.readLine().toLowerCase();
@@ -156,8 +169,14 @@ public class test1 {
             if (guess.equals(strSecretWord)) {
                 con.println("Congratulations! You've guessed the word correctly!");
                 gameOver = true;
-                return 100; // Score for guessing the word
+                return (intMaxTries - intTries) * 20; // Score based on remaining tries
             } else {
+                // Incorrect guess: Reveal one letter at random
+                int randomIndex = (int)(Math.random() * strSecretWord.length());
+                while (revealedLetters.charAt(randomIndex) != '_') {
+                    randomIndex = (int)(Math.random() * strSecretWord.length());
+                }
+                revealedLetters.setCharAt(randomIndex, strSecretWord.charAt(randomIndex));
                 intTries++;
                 con.println("Incorrect guess!");
             }
@@ -190,21 +209,26 @@ public class test1 {
         highScoreFile.close();
     }
 
-    // Function to add a new theme (For simplicity, this assumes the theme is added manually to the file)
+    // Function to add a new theme (allows adding a theme without needing Themes.txt)
     private static void addTheme(Console con) {
-        con.println("To add a new theme, simply create a new .txt file with 10 words of 7 letters each.");
-        con.println("Save the file with the theme name (e.g., 'NewTheme.txt') and add it to the program.");
+        con.print("Enter the name for the new theme file (e.g., 'NewTheme.txt'): ");
+        String themeFileName = con.readLine();
+
+        // Open the new theme file for writing
+        TextOutputFile newThemeFile = new TextOutputFile(themeFileName);
+        con.println("Enter 10 words (each 7 letters long) for the new theme:");
+
+        // Add 10 words to the new theme file
+        for (int i = 0; i < 10; i++) {
+            con.print("Enter word #" + (i + 1) + ": ");
+            String word = con.readLine();
+            newThemeFile.println(word); // Save word to the file
+        }
+
+        newThemeFile.close();  // Close the theme file
+        con.println("Theme file '" + themeFileName + "' has been created successfully!");
     }
 }
 
-    // Function to draw the hangman based on the number of tries
-    public static void drawHangman{
-        String[] arrHangmanStages = {
-            "  ----\n  |  |\n     |\n     |\n     |\n     |\n---------",
-            "  ----\n  |  |\n  O  |\n     |\n     |\n     |\n---------",
-            "  ----\n  |  |\n  O  |\n  |  |\n     |\n     |\n---------",
-            "  ----\n  |  |\n  O  |\n /|  |\n     |\n     |\n---------",
-            "  ----\n  |  |\n  O  |\n /|\\ |\n     |\n     |\n---------",
-            "  ----\n  |  |\n  O  |\n /|\\ |\n /   |\n     |\n---------",
-            "  ----\n  |  |\n  O  |\n /|\\ |\n / \\ |\n     |\n---------"
-    }
+
+
